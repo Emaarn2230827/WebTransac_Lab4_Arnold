@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Ajout Publication</title>
+    <link href="../css/custom.css" rel="stylesheet" >
+    <link href="../css/style.css" rel="stylesheet" >
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+</head>
+<body id="bodyAddPub">
+    <div id="root">
+    </div>
+    <h1> Ajouter une Publication</h1> 
+    <form id="addPublicationForm" action="index.html" method="POST" class="my-4 mx-auto">
+
+        <div class="mb-3 align-items-center">
+            <label for="title" class="form-label">Titre :</label>
+            <input type="text" class="form-control custom-input" id="title" name="title" placeholder="Entrez le titre" required>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Auteur :</label>
+            <input type="text" class="form-control custom-input" id="author" name="author" placeholder="Entrez l'auteur" required>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Contenu :</label>
+            <textarea id="content" class="form-control custom-input" name="content" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="confirmationDialog" title="Confirmer l'envoi">
+        
+    </div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script src="../js/addPublication.js"></script>
+</body>
+</html>
