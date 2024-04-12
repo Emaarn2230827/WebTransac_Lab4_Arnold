@@ -170,18 +170,7 @@
       "idPub": "4",
       "contenu": "test",
       "datePublication": "2024-03-25"
-    },
-    {
-      "id": "ca73",
-      "idPub": "1",
-      "contenu": "comment",
-      "datePublication": "2024-04-08"
-    },
-    {
-      "id": "1cef",
-      "idPub": "1",
-      "contenu": "comment2",
-      "datePublication": "2024-04-08"
     }
+    
   ]
 }
