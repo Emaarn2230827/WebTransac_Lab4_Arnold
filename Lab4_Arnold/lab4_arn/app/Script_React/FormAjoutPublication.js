@@ -1,30 +1,8 @@
 
 import React from 'react';
-import { revalidatePath } from 'next/cache';
-
+import addPublication from '../addPublication/addPubServer';
 function FormAjoutPublication() {
-
-    async function addPublication(formData) {
-        "use server";
-        const title = formData.get('title');
-        const author = formData.get('author');
-        const content = formData.get('content');
-        await fetch('http://localhost:3000/publications', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                titre: title,
-                auteur: author,
-                contenu: content,
-                datePublication: getCurrentDate()
-            })
-        });
-       revalidatePath('/');
-     // comment faire la redirection vers la page principale
-    }
-
+   
     return(
         <>
             <h1> Ajouter une Publication</h1>
@@ -41,16 +19,10 @@ function FormAjoutPublication() {
                     <label htmlFor="content" className="form-label">Contenu :</label>
                     <textarea id="content" className="form-control custom-input" name="content" rows="4" required/> 
                 </div>              
-                    <button type="submit" className="btn btn-primary">Submit</button>                         
+                    <button type="submit"  className="btn btn-primary">Submit</button>                         
             </form>
         </>
     );
 }
-function getCurrentDate() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
+
 export default FormAjoutPublication;

@@ -1,6 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
 
 import Header from "./Script_React/Header";
 import Footer from "./Script_React/Footer";
