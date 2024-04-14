@@ -1,8 +1,8 @@
-import React from 'react'
 
+"use server";
 
     export default async function addPublication(formData) {
-        "use server";
+      
         const title = formData.get('title');
         const author = formData.get('author');
         const content = formData.get('content');

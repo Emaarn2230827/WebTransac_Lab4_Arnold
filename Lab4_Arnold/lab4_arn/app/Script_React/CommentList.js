@@ -23,7 +23,7 @@ function CommentList({ idPub }) {
         fetchData();
         const intervalId = setInterval(() => {
             fetchData(); // Appel de la fonction fetchData chaque seconde
-        }, 5000);
+        }, 3000);
 
         // Nettoyage de l'intervalle lors du démontage du composant
         return () => {
