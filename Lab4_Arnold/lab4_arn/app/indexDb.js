@@ -5,7 +5,6 @@ import commentaires from "../../db.json";
 
 //nom de la bd
 const DB_NAME = 'BdBlogs';
-const DB_NAME2 = 'BdCommentaires';
 const DB_VERSION = 1;
 //nom des  tables
 const OBJECT_STORE_NAME = 'publications';
@@ -24,7 +23,12 @@ export async function initPublicationsIndexedDB() {
                 pub.createIndex('auteur', 'auteur', { unique: false });
                 pub.createIndex('contenu', 'contenu', { unique: false });
                 pub.createIndex('datePublication', 'datePublication', { unique: false });
-            }
+                const com = db.createObjectStore(OBJECT_STORE_NAME2, { keyPath: 'id', autoIncrement: true });
+                com.createIndex('idPub', 'idPub', { unique: false });
+                com.createIndex('contenu', 'contenu', { unique: false });
+                com.createIndex('datePublication', 'datePublication', { unique: false });
+
+            } //ajouter les commentaires
         };
 
         request.onsuccess = (event) => {
@@ -117,35 +121,12 @@ export const initPubIndexedDB = async () => {
     }
 };
 
-export async function initCommentairesIndexedDB() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open( DB_NAME2 , DB_VERSION);
 
-        request.onupgradeneeded = (event) => {
-            const bd = event.target.result;
-            if (!bd.objectStoreNames.contains(OBJECT_STORE_NAME2)) {
-                const com = bd.createObjectStore(OBJECT_STORE_NAME2, { keyPath: 'id', autoIncrement: true });
-                com.createIndex('idPub', 'idPub', { unique: false });
-                com.createIndex('contenu', 'contenu', { unique: false });
-                com.createIndex('datePublication', 'datePublication', { unique: false });
-            }
-        };
-
-        request.onsuccess = (event) => {
-            resolve(event.target.result);
-        };
-
-        request.onerror = (event) => {
-            console.error('Erreur lors de l\'initialisation d\'IndexedDB :', event.target.error);
-            reject(event.target.error);
-        };
-    });
-}
 
 
 // Fonction pour ajouter un commentaire
 export async function ajouterCommentaire(commentaire) {
-    const bd = await initCommentairesIndexedDB();
+    const bd = await initPublicationsIndexedDB();
     return new Promise((resolve, reject) => {
         const transaction = bd.transaction(OBJECT_STORE_NAME2, 'readwrite');
         const objectStore = transaction.objectStore(OBJECT_STORE_NAME2);
@@ -162,7 +143,7 @@ export async function ajouterCommentaire(commentaire) {
     });
 }
 export async function obtenirTousCommentaires(idPub) {
-    const bd = await initCommentairesIndexedDB();
+    const bd = await initPublicationsIndexedDB();
     return new Promise((resolve, reject) => {
         const transaction = bd.transaction(OBJECT_STORE_NAME2, 'readonly');
         const objectStore = transaction.objectStore(OBJECT_STORE_NAME2);
@@ -182,7 +163,7 @@ export async function obtenirTousCommentaires(idPub) {
 }
 // Fonction pour initialiser les commentaires de db.json dans IndexedDB
 export const initComIndexedDB = async (idPub) => {
-    const bd = await initCommentairesIndexedDB();
+    const bd = await initPublicationsIndexedDB();
     const transaction = bd.transaction(OBJECT_STORE_NAME2, 'readwrite');
     const objectStore = transaction.objectStore(OBJECT_STORE_NAME2);
     objectStore.clear();

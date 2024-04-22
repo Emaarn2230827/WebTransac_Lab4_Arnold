@@ -1,8 +1,8 @@
-
 import React from 'react';
 import addPublication from '../addPublication/addPubServer';
+
 function FormAjoutPublication() {
-   
+
     return(
         <>
             <h1> Ajouter une Publication</h1>

@@ -48,6 +48,13 @@
       "auteur": "Michael Turner",
       "datePublication": "2022-04-20",
       "contenu": "Embark on a journey into the unknown, where the path unfolds with each step. Challenges become opportunities, and every twist in the road reveals the resilience within. Embrace the adventure, for it is in the unknown that we find the true essence of our capabilities."
+    },
+    {
+      "id": "c188",
+      "titre": "forever",
+      "auteur": "james",
+      "contenu": "i have a dream",
+      "datePublication": "2024-04-22"
     }
   ],
   "commentaires": [
@@ -158,6 +165,12 @@
       "idPub": "7",
       "contenu": "finalll",
       "datePublication": "2024-04-14"
+    },
+    {
+      "id": "5b36",
+      "idPub": "c188",
+      "contenu": "test commentaires",
+      "datePublication": "2024-04-22"
     }
   ]
 }
